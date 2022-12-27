@@ -11,7 +11,8 @@ server.set("view engine" , "ejs");
 server.use(bodyParser.urlencoded({extended:true}));
 server.use(express.static("public"));
 
-mongoose.connect("mongodb://127.0.0.1:27017/ListDB");
+// mongoose.connect("mongodb://127.0.0.1:27017/ListDB");
+mongoose.connect("mongodb+srv://aditya:aditya112233@atlascluster.urim7w3.mongodb.net/?retryWrites=true&w=majority")
 
 const ItemSchema = new mongoose.Schema({
   name:String
