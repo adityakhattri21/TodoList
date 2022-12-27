@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
+const port = process.env.PORT || 3000
 
 const server = express();
 
@@ -10,7 +11,7 @@ server.set("view engine" , "ejs");
 server.use(bodyParser.urlencoded({extended:true}));
 server.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost:27017/ListDB");
+mongoose.connect("mongodb://127.0.0.1:27017/ListDB");
 
 const ItemSchema = new mongoose.Schema({
   name:String
@@ -100,7 +101,6 @@ server.post("/" ,(req,res)=>{
       res.redirect("/"+listName)
     })
   }
-
 });
 
 server.post("/delete" , (req,res) =>{
@@ -124,6 +124,6 @@ server.post("/delete" , (req,res) =>{
 })
 
 
-server.listen(3000 , ()=> {
-  console.log("Server started at port 3000");
+server.listen(port , ()=> {
+  console.log(`Server started at port ${port}`);
 })
